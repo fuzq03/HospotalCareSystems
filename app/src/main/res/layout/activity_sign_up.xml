@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Welcome"
+                android:text="Register"
                 android:textColor="#FFFFFF"
                 android:typeface="monospace"
                 android:textSize="28sp"/>
@@ -41,7 +41,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:background="@drawable/user"/>
                 <EditText
                     android:layout_width="match_parent"
@@ -50,8 +50,8 @@
                     android:typeface="serif"
                     android:background="@null"
                     android:layout_gravity="center"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginStart="30dp"
                     android:textColor="#9F9FA0"
                     android:textColorHint="#9F9FA0"
                     android:textSize="25dp"
@@ -75,7 +75,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:background="@drawable/password"/>
                 <EditText
                     android:layout_width="match_parent"
@@ -89,8 +89,8 @@
                     android:textSize="25dp"
                     android:textColor="#9F9FA0"
                     android:textColorHint="#9F9FA0"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="50dp"/>
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="50dp"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -108,9 +108,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:background="@drawable/email"/>
                 <EditText
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:typeface="serif"
@@ -121,8 +122,8 @@
                     android:textSize="25dp"
                     android:textColor="#9F9FA0"
                     android:textColorHint="#9F9FA0"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="50dp"/>
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="50dp"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -140,9 +141,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:background="@drawable/address"/>
                 <EditText
+                    android:id="@+id/address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:typeface="serif"
@@ -152,8 +154,8 @@
                     android:textSize="25dp"
                     android:textColor="#9F9FA0"
                     android:textColorHint="#9F9FA0"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="50dp"/>
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="50dp"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"

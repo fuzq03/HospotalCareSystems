@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/fragment_1"
+        android:icon="@drawable/home"
+        app:showAsAction="ifRoom"
+        android:title="Home"/>
+    <item
+        android:id="@+id/fragment_2"
+        android:icon="@drawable/ic_dairy"
+        android:title="Journal"/>
+    <item
+        android:id="@+id/fragment_3"
+        android:icon="@drawable/ic_contact"
+        android:title="friend"/>
+    <item
+        android:id="@+id/fragment_4"
+        android:icon="@drawable/user"
+        android:title="Me"/>
+</menu>

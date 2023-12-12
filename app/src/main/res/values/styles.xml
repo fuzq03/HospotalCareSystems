@@ -5,4 +5,8 @@
     <style name="RadioButtonStyle" parent="@style/Widget.AppCompat.CompoundButton.RadioButton">
         <item name="android:buttonTint">#FFFFFF</item>
     </style>
+    <style name="BottomNavigationStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="itemIconTint">@color/yellow</item>
+        <item name="itemTextColor">@null</item>
+    </style>
 </resources>
