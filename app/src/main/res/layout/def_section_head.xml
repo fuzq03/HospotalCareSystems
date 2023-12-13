@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ripple_item_select2"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/node_ll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginRight="5dp"
+            android:textSize="20sp"
+            android:padding="8dp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black"
+            android:layout_weight="1.0"
+            android:text="一级标题0"/>
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/right_arrow"
+            tools:ignore="VectorDrawableCompat" />
+    </LinearLayout>
+
+    <!--  <color name="veeeeee">#eeeeee</color> -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#eeeeee" />
+</LinearLayout>

@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.xyx.travelingshare.Fragment.FriendListFragment
 import com.xyx.travelingshare.Fragment.MyFragment
 import com.xyx.travelingshare.Fragment.MyFragmentStateAdapter
+import com.xyx.travelingshare.entity.User_All
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var mViewPager: ViewPager2
@@ -61,6 +63,7 @@ class HomeActivity : AppCompatActivity() {
                 2 -> {
                     itemID = R.id.fragment_3
                     Log.d("HL", "3")
+
                 }
                 3 -> {
                     itemID = R.id.fragment_4
@@ -76,8 +79,12 @@ class HomeActivity : AppCompatActivity() {
      */
     private fun initData(): List<Fragment> {
         val mData = ArrayList<Fragment>()
-        for (i in 0 until 5) {
-            mData.add(MyFragment.newInstance(i))
+        for (i in 0 until 4) {
+            if(i == 2){
+                mData.add(FriendListFragment.newInstance(i))
+            }else{
+                mData.add(MyFragment.newInstance(i))
+            }
         }
         return mData
     }

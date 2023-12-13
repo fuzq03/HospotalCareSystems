@@ -1,20 +1,23 @@
 package com.xyx.travelingshare
 
 import android.content.Intent
-import android.media.audiofx.Visualizer
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.ActionProvider.VisibilityListener
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.google.gson.Gson
+import com.xyx.travelingshare.entity.User
+import com.xyx.travelingshare.entity.User_All
 import com.xyx.travelingshare.utils.HttpPostRequest
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.FormBody
@@ -56,13 +59,25 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onResponse(call: Call, response: Response) {
+                    val json = response.body()?.string()
                     Looper.prepare()
                     /**
                      * 接受服务器发回来的消息，并进行判断
                      */
-                    if (response.body()?.string() != "0"){
-                        val intent = Intent(applicationContext,HomeActivity::class.java)
-                        startActivity(intent)
+                    if (json != "") {
+                        CoroutineScope(Dispatchers.Main).launch {
+                            val gson = Gson()
+                            val user = gson.fromJson(json, User::class.java)
+                            User_All.id = user.id
+                            User_All.userName = user.userName
+                            User_All.passWord = user.passWord
+                            User_All.address = user.address
+                            User_All.email = user.email
+                            User_All.gender = user.gender
+                            val intent = Intent(applicationContext, HomeActivity::class.java)
+                            startActivity(intent)
+                        }
+
                     }else{
                         /**
                          * 开启主线程进行动画渲染
