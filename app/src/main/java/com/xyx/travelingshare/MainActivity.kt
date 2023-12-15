@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         loginButton.setOnClickListener {
-            val url = "http://192.168.137.1:8080/user/login"
+            val url = "http://100.65.175.3:8080/user/login"
             val requestBody = FormBody.Builder()
                 .add("username",userText.text.toString())
                 .add("password",passWardText.text.toString())

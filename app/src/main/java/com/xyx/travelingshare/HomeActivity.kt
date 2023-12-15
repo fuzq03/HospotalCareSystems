@@ -34,14 +34,6 @@ class HomeActivity : AppCompatActivity() {
                     mViewPager.setCurrentItem(1, true)
                     true
                 }
-                R.id.fragment_3 -> {
-                    mViewPager.setCurrentItem(2, true)
-                    true
-                }
-                R.id.fragment_4 -> {
-                    mViewPager.setCurrentItem(3, true)
-                    true
-                }
                 else -> false
             }
         }
@@ -60,15 +52,6 @@ class HomeActivity : AppCompatActivity() {
                     itemID = R.id.fragment_2
                     Log.d("HL", "2")
                 }
-                2 -> {
-                    itemID = R.id.fragment_3
-                    Log.d("HL", "3")
-
-                }
-                3 -> {
-                    itemID = R.id.fragment_4
-                    Log.d("HL", "4")
-                }
             }
             // TODO 当Fragment滑动改变时，底部的Tab也跟着改变
             mBottomNavigationView.selectedItemId = itemID
@@ -79,8 +62,8 @@ class HomeActivity : AppCompatActivity() {
      */
     private fun initData(): List<Fragment> {
         val mData = ArrayList<Fragment>()
-        for (i in 0 until 4) {
-            if(i == 2){
+        for (i in 0 until 2) {
+            if(i == 0){
                 mData.add(FriendListFragment.newInstance(i))
             }else{
                 mData.add(MyFragment.newInstance(i))
