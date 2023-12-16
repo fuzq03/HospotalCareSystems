@@ -45,6 +45,12 @@ class DetailActivity : AppCompatActivity() {
         nameTextView = findViewById(R.id.name)
         informationTextView = findViewById(R.id.information)
         button = findViewById(R.id.start)
+        button.setOnClickListener {
+            val intent = Intent(applicationContext,AppointmentActivity::class.java)
+            intent.putExtra("id",id)
+            intent.putExtra("friend_name",nameTextView.text)
+            startActivity(intent)
+        }
         photoImageView=findViewById(R.id.photo)
         fetchInformation(id)
     }
