@@ -1,7 +1,5 @@
 package com.xyx.travelingshare.alipay
 
-import android.text.TextUtils
-
 
 class PayResult(rawResult: String) {
     /**	 * @return the resultStatus	  */

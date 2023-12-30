@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.xyx.travelingshare.Fragment.FriendListFragment
 import com.xyx.travelingshare.Fragment.MyFragment
 import com.xyx.travelingshare.Fragment.MyFragmentStateAdapter
-import com.xyx.travelingshare.entity.User_All
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var mViewPager: ViewPager2

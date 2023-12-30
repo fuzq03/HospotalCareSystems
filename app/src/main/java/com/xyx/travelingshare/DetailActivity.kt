@@ -4,25 +4,15 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.os.Looper
 import android.util.Base64
 import android.util.Log
-import android.view.View
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import com.chad.library.adapter.base.entity.node.BaseNode
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.xyx.travelingshare.entity.Friend
-import com.xyx.travelingshare.entity.User
-import com.xyx.travelingshare.entity.User_All
-import com.xyx.travelingshare.entity.node_section.ItemNode
-import com.xyx.travelingshare.entity.node_section.RootNode
 import com.xyx.travelingshare.utils.HttpPostRequest
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -55,7 +45,7 @@ class DetailActivity : AppCompatActivity() {
         fetchInformation(id)
     }
     private fun fetchInformation(id:Int){
-        val url = "http://100.65.175.3:8080/friend/getById"
+        val url = "http://192.168.8.26:8080/friend/getById"
         val requestBody = FormBody.Builder()
             .add("id", id.toString())
             .build()

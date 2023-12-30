@@ -5,9 +5,9 @@ import android.widget.ImageView
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.chad.library.adapter.base.provider.BaseNodeProvider
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.xyx.travelingshare.R
 import com.xyx.travelingshare.entity.node_section.RootNode
 import com.xyx.travelingshare.ext.rotation
+import com.xyx.travelingshare.R
 
 class RootNodeProvider:BaseNodeProvider() {
     override val itemViewType: Int

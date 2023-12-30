@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/green"
+
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预约人："
+            android:textSize="15dp"
+            android:id="@+id/appointUser"
+            android:layout_marginStart="30dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预约金额：0.01元"
+            android:textSize="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="30dp"/>
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:id="@+id/delete"
+        android:text="取消预约"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
+</LinearLayout>

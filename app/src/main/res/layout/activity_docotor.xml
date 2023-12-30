@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context="com.xyx.travelingshare.MainActivity">
-
+    android:background="@drawable/hospital"
+    tools:context="com.xyx.travelingshare.DocotorActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,7 +17,7 @@
             android:layout_gravity="end"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/patient"/>
+            android:background="@drawable/docotor"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,13 +28,13 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="30dp"
                 android:paddingTop="20dp"
-                android:background="#99404348"
+                android:background="#E1496861"
                 android:gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Welcome"
+                    android:text="Docotor Welcome"
                     android:textColor="#FFFFFF"
                     android:typeface="monospace"
                     android:textSize="28sp"/>
@@ -46,7 +45,7 @@
                 android:orientation="vertical"
                 android:paddingBottom="20dp"
                 android:paddingTop="20dp"
-                android:background="#99000000">
+                android:background="#ED36504A">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,7 +54,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:background="@drawable/user"/>
+                        android:background="@drawable/user" />
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -126,22 +125,13 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/login"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="40dp"
                     android:layout_weight="1"
+                    android:shadowColor="@color/green"
                     android:background="@drawable/buttonstyle"
                     android:text="Login"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/signUp"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/buttonstyle"
-                    android:layout_weight="1"
-                    android:text="Sign in"/>
             </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
-
 </LinearLayout>

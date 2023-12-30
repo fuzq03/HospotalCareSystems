@@ -1,29 +1,24 @@
 package com.xyx.travelingshare.Fragment
 
 import android.annotation.SuppressLint
-import android.content.Intent
+import android.graphics.Color
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
-import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
 import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
-import com.xyx.travelingshare.HomeActivity
-import com.xyx.travelingshare.R
 import com.xyx.travelingshare.entity.Appointment
-import com.xyx.travelingshare.entity.User
 import com.xyx.travelingshare.entity.User_All
 import com.xyx.travelingshare.utils.HttpPostRequest
+import com.xyx.travelingshare.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,6 +30,8 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
+import java.util.Calendar
+import java.util.Locale
 
 class MyFragment : Fragment() {
     private lateinit var userTextView: TextView
@@ -78,10 +75,10 @@ class MyFragment : Fragment() {
     }
     @SuppressLint("MissingInflatedId")
     private fun initData(){
-        userTextView.text = userTextView.text.toString()+User_All.userName
-        emailTextView.text = emailTextView.text.toString()+User_All.email
-        addressTextView.text = addressTextView.text.toString()+User_All.address
-        val url = "http://100.65.175.3:8080/appointment/getByUserId"
+        userTextView.text = "账户：${User_All.userName}"
+        emailTextView.text = "邮箱：${User_All.email}"
+        addressTextView.text = "地址：${User_All.address}"
+        val url = "http://192.168.8.26:8080/appointment/getByUserId"
         val requestBody = FormBody.Builder()
             .add("id", User_All.id.toString())
             .build()
@@ -115,6 +112,18 @@ class MyFragment : Fragment() {
                                 view.findViewById<Button>(R.id.delete).setOnClickListener {
                                     fetchDelete(appointment.id)
                                 }
+                                val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                                val appointmentDate = dateFormat.parse(appointment.date)
+
+                                val today = Calendar.getInstance() // 获取当前日期
+                                today.set(Calendar.HOUR_OF_DAY, 0)
+                                today.set(Calendar.MINUTE, 0)
+                                today.set(Calendar.SECOND, 0)
+                                today.set(Calendar.MILLISECOND, 0)
+
+                                if (appointmentDate < today.time) {
+                                    view.setBackgroundColor(Color.RED) // 设置视图的背景颜色为红色
+                                }
                                 memolayout.addView(view)
                             }
                         }
@@ -126,7 +135,7 @@ class MyFragment : Fragment() {
         })
     }
     private fun fetchDelete(id: Int) = CoroutineScope(Dispatchers.IO).launch {
-        val url = "http://100.65.175.3:8080/appointment/deleteAppointment"
+        val url = "http://192.168.8.26:8080/appointment/deleteAppointment"
         val requestBody = FormBody.Builder()
             .add("id", id.toString())
             .build()

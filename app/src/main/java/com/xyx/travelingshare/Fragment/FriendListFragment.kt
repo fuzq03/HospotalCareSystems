@@ -1,7 +1,5 @@
 package com.xyx.travelingshare.Fragment
 
-import android.content.ClipData.Item
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.xyx.travelingshare.R
 import com.xyx.travelingshare.entity.Friend
 import com.xyx.travelingshare.entity.node_section.ItemNode
 import com.xyx.travelingshare.entity.node_section.RootNode
 import com.xyx.travelingshare.utils.HttpPostRequest
+import com.xyx.travelingshare.R
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.FormBody
@@ -79,7 +77,7 @@ class FriendListFragment:Fragment() {
     }
 
     private fun fetchAllTypes() {
-        val url = "http://100.65.175.3:8080/friend/getTypeCount"
+        val url = "http://192.168.8.26:8080/friend/getTypeCount"
         val requestBody = FormBody.Builder()
             .build()
         HttpPostRequest().okhttpPost(url, requestBody,object : Callback {
@@ -103,7 +101,7 @@ class FriendListFragment:Fragment() {
     }
 
     private fun fetchDataByType(type: String) {
-        val url = "http://100.65.175.3:8080/friend/getByType"
+        val url = "http://192.168.8.26:8080/friend/getByType"
         val requestBody = FormBody.Builder()
             .add("type", type)
             .build()
@@ -124,7 +122,6 @@ class FriendListFragment:Fragment() {
                     val items = mutableListOf<BaseNode>()
                     for (friend in friendList) {
                         val item = ItemNode(0, friend.friend_name,friend.id)
-                        Log.d("HomeActivity","${friend.id}")
                         items.add(item)
                     }
                     val entity_friend = RootNode(items, type)

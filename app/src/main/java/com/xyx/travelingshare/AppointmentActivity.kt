@@ -2,6 +2,7 @@ package com.xyx.travelingshare
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -18,6 +19,7 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import cn.refactor.lib.colordialog.PromptDialog
 import com.google.gson.Gson
 import com.loper7.date_time_picker.DateTimeConfig
 import com.loper7.date_time_picker.dialog.CardDatePickerDialog
@@ -31,7 +33,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.Call
-import okhttp3.Callback
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -45,6 +46,7 @@ class AppointmentActivity : AppCompatActivity() {
     private lateinit var dateTextView: TextView
     private lateinit var dateTimeTextView: TextView
     private lateinit var appointmentButton: Button
+    private lateinit var rule:TextView
 
     private val SDK_PAY_FLAG = 1
 
@@ -76,7 +78,7 @@ class AppointmentActivity : AppCompatActivity() {
                         } else {
                             // 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
                             Toast.makeText(this@AppointmentActivity, "支付失败$resultInfo", Toast.LENGTH_SHORT).show()
-                            val url = "http://100.65.175.3:8080/appointment/save"
+                            val url = "http://192.168.8.26:8080/appointment/save"
                             val requestBody = FormBody.Builder()
                                 .add("date",dateTextView.text.toString())
                                 .add("start_time",start_time)
@@ -112,7 +114,6 @@ class AppointmentActivity : AppCompatActivity() {
                             // 在支付成功时进行页面跳转
                             val intent = Intent(this@AppointmentActivity, HomeActivity::class.java)
                             startActivity(intent)
-                            finish() // 可选，根据您的需求选择是否结束当前Activity
                         }
                     }
                 }
@@ -130,10 +131,25 @@ class AppointmentActivity : AppCompatActivity() {
         dateTextView = findViewById(R.id.date)
         dateTimeTextView = findViewById(R.id.datetime)
         appointmentButton = findViewById(R.id.appointmentButton)
+        rule = findViewById(R.id.appointrule)
 
         appointmentButton.setOnClickListener {
             AliPayThread().start()
 
+        }
+        rule.setOnClickListener {
+            PromptDialog(this)
+                .setDialogType(PromptDialog.DIALOG_TYPE_HELP)
+                .setAnimationEnable(true)
+                .setTitleText("Rule")
+                .setContentText("1.每位医生在不请假的情况下每天从8：00开始有8个小时的预约时间段\n"
+                        +"2.每个预约时间段限制为1小时，该时间段最多存在3个人预约该时间段\n"
+                        +"3.选择确认的预约时间段预约需要缴纳相应的预约费（目前只支持支付宝支付）\n"+
+                        "4.每位用户可以在个人主页取消预约重新预约")
+                .setPositiveListener("OK") { dialog ->
+                    dialog.dismiss()
+                }
+                .show()
         }
 
         datelayout.setOnClickListener {
@@ -161,7 +177,7 @@ class AppointmentActivity : AppCompatActivity() {
         }
     }
     private suspend fun fetchAppointment(): List<String> = withContext(Dispatchers.IO) {
-        val url = "http://100.65.175.3:8080/appointment/getByFriendId"
+        val url = "http://192.168.8.26:8080/appointment/getByFriendId"
         val requestBody = FormBody.Builder()
             .add("id", id.toString())
             .add("date", dateTextView.text.toString())
@@ -201,7 +217,7 @@ class AppointmentActivity : AppCompatActivity() {
 
             for (i in 8 until 18) {
                 val starttime = "$i:00"
-                if (!startList.contains(starttime) && i != 12 && i != 13) {
+                if ( i != 12 && i != 13) {
                     val radioButton = RadioButton(this@AppointmentActivity)
                     radioButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20f)
                     if(i==8){
@@ -216,6 +232,19 @@ class AppointmentActivity : AppCompatActivity() {
                         dateTimeTextView.text=radioButton.text
                         start_time = starttime
                         end_time = "${i + 1}:00"
+                    }
+                    var count = 0
+                    if(startList.contains(starttime)){
+                        count = startList.count { it == starttime }
+                        if(count>0&&count<3){
+                            radioButton.text = radioButton.text.toString()+"(已有${count}人预约)"
+                        }else if(count == 3){
+                            radioButton.text = radioButton.text.toString()+"(已有${count}人预约)"
+                            radioButton.setTextColor(Color.RED)
+                            radioButton.isEnabled = false
+                        }
+                    }else{
+                        radioButton.text = radioButton.text.toString()+"(已有0人预约)"
                     }
                     timeGroup.addView(radioButton)
                 }

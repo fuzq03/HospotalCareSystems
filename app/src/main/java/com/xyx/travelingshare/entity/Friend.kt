@@ -5,5 +5,6 @@ data class Friend (
     val friend_name:String,
     val friend_type:String,
     val friend_information:String,
+    val password:Int,
     val base64:String
     )

@@ -3,11 +3,7 @@ package com.xyx.travelingshare
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.os.Looper
-import android.view.View
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.TextView
@@ -48,7 +44,7 @@ class SignUpActivity : AppCompatActivity() {
         femaleRadioButton = findViewById(R.id.radioButtonFemale)
         signUpButton = findViewById(R.id.signUp)
         signUpButton.setOnClickListener {
-            val url = "http://100.65.175.3:8080/user/save"
+            val url = "http://192.168.8.26:8080/user/save"
             var gender="male"
             gender = if(maleRadioButton.isChecked){
                 "male"

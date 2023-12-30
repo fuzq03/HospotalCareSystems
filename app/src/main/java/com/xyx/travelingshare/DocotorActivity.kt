@@ -13,8 +13,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import com.google.gson.Gson
-import com.xyx.travelingshare.entity.User
-import com.xyx.travelingshare.entity.User_All
+import com.xyx.travelingshare.entity.Friend
 import com.xyx.travelingshare.utils.HttpPostRequest
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,53 +24,44 @@ import okhttp3.FormBody
 import okhttp3.Response
 import java.io.IOException
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var userText:TextView
-    private lateinit var passWardText:TextView
+class DocotorActivity : AppCompatActivity() {
+    private lateinit var userText: TextView
+    private lateinit var passWardText: TextView
     private lateinit var loginButton: Button
-    private lateinit var signUpButton: Button
     private lateinit var noticeTextView: TextView
     private lateinit var switchImageButton: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        initFace()
+        setContentView(R.layout.activity_docotor)
+        initView()
     }
-    private fun initFace(){
+    private fun initView(){
         userText = findViewById(R.id.uerName)
         passWardText = findViewById(R.id.passWord)
         noticeTextView = findViewById(R.id.notice)
         loginButton = findViewById(R.id.login)
-        signUpButton = findViewById(R.id.signUp)
         switchImageButton = findViewById(R.id.switchImage)
         /**
          * 切换用户/专家登录
          */
         switchImageButton.setOnClickListener {
-            val intent = Intent(applicationContext,DocotorActivity::class.java)
+            val intent = Intent(applicationContext,MainActivity::class.java)
             startActivity(intent)
             finish()
-        }
-        /**
-         * 注册按钮事件
-         */
-        signUpButton.setOnClickListener{
-            val intent = Intent(applicationContext,SignUpActivity::class.java)
-            startActivity(intent)
         }
         /**
          * 登录按钮事件
          */
         loginButton.setOnClickListener {
-            val url = "http://192.168.8.26:8080/user/login"
+            val url = "http://192.168.8.26:8080/friend/login"
             val requestBody = FormBody.Builder()
-                .add("username",userText.text.toString())
+                .add("name",userText.text.toString())
                 .add("password",passWardText.text.toString())
                 .build()
             HttpPostRequest().okhttpPost(url, requestBody, object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
                     Looper.prepare()
-                    Toast.makeText(this@MainActivity, "post请求失败", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@DocotorActivity, "post请求失败", Toast.LENGTH_SHORT).show()
                     Looper.loop()
                 }
 
@@ -84,14 +74,9 @@ class MainActivity : AppCompatActivity() {
                     if (json != "") {
                         CoroutineScope(Dispatchers.Main).launch {
                             val gson = Gson()
-                            val user = gson.fromJson(json, User::class.java)
-                            User_All.id = user.id
-                            User_All.userName = user.userName
-                            User_All.passWord = user.passWord
-                            User_All.address = user.address
-                            User_All.email = user.email
-                            User_All.gender = user.gender
-                            val intent = Intent(applicationContext, HomeActivity::class.java)
+                            val friend = gson.fromJson(json, Friend::class.java)
+                            val intent = Intent(this@DocotorActivity,DocotorInformationActivity::class.java)
+                            intent.putExtra("id",friend.id)
                             startActivity(intent)
                         }
 

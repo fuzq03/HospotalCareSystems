@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edit_dialog.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="编辑资料"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="账户名称:"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberPassword"
+        android:hint="密码:"/>
+
+    <EditText
+        android:id="@+id/editInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="信息:"
+        android:inputType="textMultiLine"
+        android:minLines="3"
+        android:maxLines="5"/>
+
+</LinearLayout>

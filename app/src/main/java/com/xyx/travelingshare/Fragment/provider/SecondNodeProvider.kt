@@ -8,8 +8,8 @@ import com.chad.library.adapter.base.entity.node.BaseNode
 import com.chad.library.adapter.base.provider.BaseNodeProvider
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.xyx.travelingshare.DetailActivity
-import com.xyx.travelingshare.R
 import com.xyx.travelingshare.entity.node_section.ItemNode
+import com.xyx.travelingshare.R
 
 class SecondNodeProvider:BaseNodeProvider() {
     override val itemViewType: Int

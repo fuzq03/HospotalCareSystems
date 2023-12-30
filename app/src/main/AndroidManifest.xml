@@ -20,6 +20,12 @@
         android:theme="@style/Theme.TravelingShare"
         tools:targetApi="31">
         <activity
+            android:name=".DocotorInformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DocotorActivity"
+            android:exported="false" />
+        <activity
             android:name=".AppointmentActivity"
             android:exported="false" />
         <activity
@@ -28,7 +34,6 @@
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
-
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -52,8 +57,7 @@
             android:exported="false"
             android:screenOrientation="behind"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            tools:replace="android:configChanges" >
-        </activity>
+            tools:replace="android:configChanges" />
     </application>
 
 </manifest>
