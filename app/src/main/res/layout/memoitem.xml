@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/green"
-    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#f1f1f1"
     android:layout_marginTop="10dp"
     android:orientation="horizontal">
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="7"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:id="@+id/date"
-            android:textColor="@color/white"
             android:text="日期:"
             android:textSize="15dp"/>
         <TextView
@@ -25,7 +28,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="2dp"
             android:id="@+id/time"
-            android:textColor="@color/white"
             android:text="预约时间:"
             android:textSize="15dp"/>
         <TextView
@@ -34,21 +36,23 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="2dp"
             android:id="@+id/friendName"
-            android:textColor="@color/white"
             android:text="预约医生:"
             android:textSize="15dp"/>
     </LinearLayout>
     <Button
+        android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_weight="1"
         android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@drawable/buttonstyle"
+        android:text="取消预约"
         android:textColor="@color/black"
-        android:background="@color/white"
-        android:id="@+id/delete"
-        android:text="删除"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

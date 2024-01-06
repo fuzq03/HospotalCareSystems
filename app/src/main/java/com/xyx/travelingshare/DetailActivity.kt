@@ -45,7 +45,7 @@ class DetailActivity : AppCompatActivity() {
         fetchInformation(id)
     }
     private fun fetchInformation(id:Int){
-        val url = "http://192.168.8.26:8080/friend/getById"
+        val url = "http://100.65.86.80/friend/getById"
         val requestBody = FormBody.Builder()
             .add("id", id.toString())
             .build()

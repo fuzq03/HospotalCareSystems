@@ -78,7 +78,7 @@ class MyFragment : Fragment() {
         userTextView.text = "账户：${User_All.userName}"
         emailTextView.text = "邮箱：${User_All.email}"
         addressTextView.text = "地址：${User_All.address}"
-        val url = "http://192.168.8.26:8080/appointment/getByUserId"
+        val url = "http://100.65.86.80/appointment/getByUserId"
         val requestBody = FormBody.Builder()
             .add("id", User_All.id.toString())
             .build()
@@ -135,7 +135,7 @@ class MyFragment : Fragment() {
         })
     }
     private fun fetchDelete(id: Int) = CoroutineScope(Dispatchers.IO).launch {
-        val url = "http://192.168.8.26:8080/appointment/deleteAppointment"
+        val url = "http://100.65.86.800/appointment/deleteAppointment"
         val requestBody = FormBody.Builder()
             .add("id", id.toString())
             .build()

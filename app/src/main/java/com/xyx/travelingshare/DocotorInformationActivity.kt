@@ -144,7 +144,7 @@ class DocotorInformationActivity : AppCompatActivity() {
      * 向后台发送修改请求
      */
     private fun updateUserInformation(id:Int,friend1: Friend?) = CoroutineScope(Dispatchers.IO).launch{
-        val url = "http://192.168.8.26:8080/friend/update"
+        val url = "http://100.65.86.80/friend/update"
         val requestBody = FormBody.Builder()
             .add("id", id.toString())
             .add("name", friend1?.friend_name)
@@ -200,7 +200,7 @@ class DocotorInformationActivity : AppCompatActivity() {
      * 从后端发送获取预约信息请求
      */
     private suspend fun fetchAppointment(id:Int): List<Appointment> = withContext(Dispatchers.IO) {
-        val url = "http://192.168.8.26:8080/appointment/getByFriendId"
+        val url = "http://100.65.86.80/appointment/getByFriendId"
         val requestBody = FormBody.Builder()
             .add("id", id.toString())
             .add("date", dateTextView.text.toString())
@@ -228,7 +228,7 @@ class DocotorInformationActivity : AppCompatActivity() {
      * 后台发送请求获取医生信息
      */
     private fun fetchInformation(id:Int){
-        val url = "http://192.168.8.26:8080/friend/getById"
+        val url = "http://100.65.86.80/friend/getById"
         val requestBody = FormBody.Builder()
             .add("id", id.toString())
             .build()
@@ -265,7 +265,7 @@ class DocotorInformationActivity : AppCompatActivity() {
         })
     }
     private fun fetchDelete(id1: Int,id: Int) = CoroutineScope(Dispatchers.IO).launch {
-        val url = "http://192.168.8.26:8080/appointment/deleteAppointment"
+        val url = "http://100.65.86.80/appointment/deleteAppointment"
         val requestBody = FormBody.Builder()
             .add("id", id1.toString())
             .build()

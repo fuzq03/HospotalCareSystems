@@ -29,7 +29,7 @@ class DocotorActivity : AppCompatActivity() {
     private lateinit var passWardText: TextView
     private lateinit var loginButton: Button
     private lateinit var noticeTextView: TextView
-    private lateinit var switchImageButton: ImageButton
+    private lateinit var ChangeToPationButton: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_docotor)
@@ -40,11 +40,11 @@ class DocotorActivity : AppCompatActivity() {
         passWardText = findViewById(R.id.passWord)
         noticeTextView = findViewById(R.id.notice)
         loginButton = findViewById(R.id.login)
-        switchImageButton = findViewById(R.id.switchImage)
+        ChangeToPationButton = findViewById(R.id.change_to_patient)
         /**
          * 切换用户/专家登录
          */
-        switchImageButton.setOnClickListener {
+        ChangeToPationButton.setOnClickListener {
             val intent = Intent(applicationContext,MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -53,7 +53,7 @@ class DocotorActivity : AppCompatActivity() {
          * 登录按钮事件
          */
         loginButton.setOnClickListener {
-            val url = "http://192.168.8.26:8080/friend/login"
+            val url = "http://100.65.86.80/friend/login"
             val requestBody = FormBody.Builder()
                 .add("name",userText.text.toString())
                 .add("password",passWardText.text.toString())

@@ -44,7 +44,7 @@ class SignUpActivity : AppCompatActivity() {
         femaleRadioButton = findViewById(R.id.radioButtonFemale)
         signUpButton = findViewById(R.id.signUp)
         signUpButton.setOnClickListener {
-            val url = "http://192.168.8.26:8080/user/save"
+            val url = "http://100.65.86.80/user/save"
             var gender="male"
             gender = if(maleRadioButton.isChecked){
                 "male"

@@ -77,7 +77,7 @@ class FriendListFragment:Fragment() {
     }
 
     private fun fetchAllTypes() {
-        val url = "http://192.168.8.26:8080/friend/getTypeCount"
+        val url = "http://100.65.86.80/friend/getTypeCount"
         val requestBody = FormBody.Builder()
             .build()
         HttpPostRequest().okhttpPost(url, requestBody,object : Callback {
@@ -101,7 +101,7 @@ class FriendListFragment:Fragment() {
     }
 
     private fun fetchDataByType(type: String) {
-        val url = "http://192.168.8.26:8080/friend/getByType"
+        val url = "http://100.65.86.80/friend/getByType"
         val requestBody = FormBody.Builder()
             .add("type", type)
             .build()

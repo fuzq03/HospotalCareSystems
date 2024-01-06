@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var loginButton: Button
     private lateinit var signUpButton: Button
     private lateinit var noticeTextView: TextView
-    private lateinit var switchImageButton: ImageButton
+    private lateinit var ChangeToDoctorButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -43,11 +43,9 @@ class MainActivity : AppCompatActivity() {
         noticeTextView = findViewById(R.id.notice)
         loginButton = findViewById(R.id.login)
         signUpButton = findViewById(R.id.signUp)
-        switchImageButton = findViewById(R.id.switchImage)
-        /**
-         * 切换用户/专家登录
-         */
-        switchImageButton.setOnClickListener {
+        ChangeToDoctorButton = findViewById(R.id.change_to_doctor)
+
+        ChangeToDoctorButton.setOnClickListener {
             val intent = Intent(applicationContext,DocotorActivity::class.java)
             startActivity(intent)
             finish()
@@ -63,7 +61,7 @@ class MainActivity : AppCompatActivity() {
          * 登录按钮事件
          */
         loginButton.setOnClickListener {
-            val url = "http://192.168.8.26:8080/user/login"
+            val url = "http://100.65.86.80/user/login"
             val requestBody = FormBody.Builder()
                 .add("username",userText.text.toString())
                 .add("password",passWardText.text.toString())

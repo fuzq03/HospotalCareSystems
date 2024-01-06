@@ -78,7 +78,7 @@ class AppointmentActivity : AppCompatActivity() {
                         } else {
                             // 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
                             Toast.makeText(this@AppointmentActivity, "支付失败$resultInfo", Toast.LENGTH_SHORT).show()
-                            val url = "http://192.168.8.26:8080/appointment/save"
+                            val url = "http://100.65.86.80/appointment/save"
                             val requestBody = FormBody.Builder()
                                 .add("date",dateTextView.text.toString())
                                 .add("start_time",start_time)
@@ -134,6 +134,7 @@ class AppointmentActivity : AppCompatActivity() {
         rule = findViewById(R.id.appointrule)
 
         appointmentButton.setOnClickListener {
+            //这个自己看要不要留
             AliPayThread().start()
 
         }
@@ -177,7 +178,7 @@ class AppointmentActivity : AppCompatActivity() {
         }
     }
     private suspend fun fetchAppointment(): List<String> = withContext(Dispatchers.IO) {
-        val url = "http://192.168.8.26:8080/appointment/getByFriendId"
+        val url = "http://100.65.86.80/appointment/getByFriendId"
         val requestBody = FormBody.Builder()
             .add("id", id.toString())
             .add("date", dateTextView.text.toString())
